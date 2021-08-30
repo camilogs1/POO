@@ -1,4 +1,4 @@
-package pkg1;
+package ejercicio1;
 
 
 public class Cls_peliculas 
