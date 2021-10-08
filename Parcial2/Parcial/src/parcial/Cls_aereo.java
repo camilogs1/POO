@@ -17,6 +17,7 @@ public class Cls_aereo extends Abstract
     public float viaje() {
         result = num_p * cant_p;
         aux = (float) (result * 0.19);
+        tasa_a = cant_p * tasa_a;
         result = result + aux + tasa_a;
         return result;
     }
