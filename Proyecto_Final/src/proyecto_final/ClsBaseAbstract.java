@@ -3,10 +3,11 @@
  */
 package proyecto_final;
 
+import java.sql.ResultSet;
+
 public abstract class ClsBaseAbstract {
    
     abstract public void Conexion();
-    abstract public int Adicionar();
-    abstract public int Modificar();
-    abstract public int Anular();
+    abstract ResultSet Consultar();
+    abstract ResultSet Anular();
 }

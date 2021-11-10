@@ -32,37 +32,37 @@ public class Main {
                         System.out.print("\n\tBienvenido Estudiante");
                         opcEstudiante = opciones.menuCRUD();
                         while (opcEstudiante != 5){
+                            //Se crea el objeto de la clase ClsEstudiante para ser usada
+                            // en cualquiera de las opciones Adicionar, Conuslta, Modificar, Anular
+                            System.out.print("Digite la id del estudiante: ");
+                            ID_estudiante = objleer.nextInt();
+                            ClsEstudiante objEstudiante = new ClsEstudiante(ID_estudiante);
                             switch (opcEstudiante){
                                 case 1: 
                                     
-                                    // ClsBaseAbstracta tiene: Conexion Adicionar, consultar, Modificar, Anular
-                                    //                          Para pedir los datos
+                                    // ClsBaseAbstracta tiene: Conexion, Adicionar, consultar, Modificar, Anular
                                     // Esas Funciones son usadas en ClsEstudiante, ClsProfesor y Cls Materia
+                                    System.out.print("Digite el nombre del estudiante: ");
+                                    nombre_estudiante = objleer.next();
+                                    System.out.print("Digite carrera del estudiante: ");
+                                    carrera = objleer.next();
+                                    System.out.print("Digite email del estudiante: ");
+                                    email_estudiante = objleer.next();
+                                    System.out.print("Digite telefono del estudiante: ");
+                                    telefono_estudiante = objleer.nextInt();
+                                    bandera = 0;
                                     
-                                    System.out.print("Digite la id del estudiante: ");
-                                        ID_estudiante = objleer.nextInt();
-                                        System.out.print("Digite el nombre del estudiante: ");
-                                        nombre_estudiante = objleer.next();
-                                        System.out.print("Digite carrera del estudiante: ");
-                                        carrera = objleer.next();
-                                        System.out.print("Digite email del estudiante: ");
-                                        email_estudiante = objleer.next();
-                                        System.out.print("Digite telefono del estudiante: ");
-                                        telefono_estudiante = objleer.nextInt();
-                                        bandera = 0;
-                                        
-                                        //Llamar las clases
-                                        if (bandera == 0)
-                                        {
-                                            System.out.println("Error adicionando registro ");
-                                        }
-                                        else
-                                        {
-                                            System.out.println("Registro adicionado");
-                                        }
+                                    //Llamar las clases
+                                    bandera = objEstudiante.Adicionar(nombre_estudiante, carrera, email_estudiante, telefono_estudiante);
+                                    
+                                    if (bandera == 0){
+                                        System.out.println("Error adicionando registro ");
+                                    }
+                                    else{
+                                        System.out.println("Registro adicionado");
+                                    }
                                 break;
-                                case 2: System.out.print("Digite la id del estudiante: ");
-                                        ID_estudiante = objleer.nextInt();
+                                case 2: result = objEstudiante.Consultar();
                                         /*
                                         result = clase consultar estudiante
                                         if (result.next()) 
@@ -80,8 +80,7 @@ public class Main {
                                         else System.out.println("Registro no existente");
                                         */
                                 break;
-                                case 3: System.out.print("Digite la id del estudiante: ");
-                                        ID_estudiante = objleer.nextInt();
+                                case 3: 
                                         System.out.print("Digite el nombre del estudiante: ");
                                         nombre_estudiante = objleer.next();
                                         System.out.print("Digite la carrera del estudiante: ");
@@ -91,18 +90,15 @@ public class Main {
                                         System.out.print("Digite el numero del estudiante: ");
                                         telefono_estudiante = objleer.nextInt();
                                         //clase modificar estudiante
-                                        bandera = 0;
-                                        if (bandera == 0)
-                                        {
+                                        bandera = objEstudiante.Modificar(nombre_estudiante, carrera, email_estudiante, telefono_estudiante);
+                                        
+                                        if (bandera == 0){
                                             System.out.println("Error modificando registro ");
-                                        }
-                                        else
-                                        {
+                                        }else{
                                             System.out.println("Registro modificado");
                                         }
                                 break;
-                                case 4: System.out.print("Digite la id del estudiante: ");
-                                        ID_estudiante = objleer.nextInt();
+                                case 4: result = objEstudiante.Anular();
                                         /*
                                         result = clase anular estudiante
                                         if (result.next()) 
@@ -122,29 +118,25 @@ public class Main {
                         System.out.print("\n\tMenu Profesor");
                         opcProfesor = opciones.menuCRUD();
                         while (opcProfesor != 5){
+                            System.out.print("Digite la id del Profesor: ");
+                            ID_profesor = objleer.nextInt();
+                            ClsProfesor objProfesor = new ClsProfesor(ID_profesor);
                             switch (opcProfesor){
-                                case 1: System.out.print("Digite la id del estudiante: ");
-                                        ID_estudiante = objleer.nextInt();
-                                        System.out.print("Digite el nombre del estudiante: ");
-                                        nombre_estudiante = objleer.next();
-                                        System.out.print("Digite carrera del estudiante: ");
-                                        carrera = objleer.next();
-                                        System.out.print("Digite email del estudiante: ");
-                                        email_estudiante = objleer.next();
-                                        System.out.print("Digite telefono del estudiante: ");
-                                        telefono_estudiante = objleer.nextInt();
-                                        bandera = 0;
-                                        if (bandera == 0)
-                                        {
+                                case 1: 
+                                        System.out.print("Digite el nombre del Profesor: ");
+                                        nombre_profesor = objleer.next();
+                                        System.out.print("Digite email del Profesor: ");
+                                        email_profesor = objleer.next();
+                                        System.out.print("Digite telefono del Profesor: ");
+                                        telefono_profesor = objleer.nextInt();
+                                        bandera = objProfesor.Adicionar(nombre_profesor, email_profesor, telefono_profesor);
+                                        if (bandera == 0){
                                             System.out.println("Error adicionando registro ");
-                                        }
-                                        else
-                                        {
+                                        }else{
                                             System.out.println("Registro adicionado");
                                         }
                                 break;
-                                case 2: System.out.print("Digite la id del estudiante: ");
-                                        ID_estudiante = objleer.nextInt();
+                                case 2: result = objProfesor.Consultar();
                                         /*
                                         result = clase consultar estudiante
                                         if (result.next()) 
@@ -162,29 +154,21 @@ public class Main {
                                         else System.out.println("Registro no existente");
                                         */
                                 break;
-                                case 3: System.out.print("Digite la id del estudiante: ");
-                                        ID_estudiante = objleer.nextInt();
-                                        System.out.print("Digite el nombre del estudiante: ");
-                                        nombre_estudiante = objleer.next();
-                                        System.out.print("Digite la carrera del estudiante: ");
-                                        carrera = objleer.next();
-                                        System.out.print("Digite el email del estudiante: ");
-                                        email_estudiante = objleer.next();
-                                        System.out.print("Digite el numero del estudiante: ");
-                                        telefono_estudiante = objleer.nextInt();
+                                case 3: System.out.print("Digite el nombre del Profesor: ");
+                                        nombre_profesor = objleer.next();
+                                        System.out.print("Digite email del Profesor: ");
+                                        email_profesor = objleer.next();
+                                        System.out.print("Digite telefono del Profesor: ");
+                                        telefono_profesor = objleer.nextInt();
                                         //clase modificar estudiante
-                                        bandera = 0;
-                                        if (bandera == 0)
-                                        {
+                                        bandera = objProfesor.Modificar(nombre_profesor, email_profesor, telefono_profesor);
+                                        if (bandera == 0){
                                             System.out.println("Error modificando registro ");
-                                        }
-                                        else
-                                        {
+                                        }else{
                                             System.out.println("Registro modificado");
                                         }
                                 break;
-                                case 4: System.out.print("Digite la id del estudiante: ");
-                                        ID_estudiante = objleer.nextInt();
+                                case 4: result = objProfesor.Anular();
                                         /*
                                         result = clase anular estudiante
                                         if (result.next()) 
@@ -204,80 +188,49 @@ public class Main {
                         System.out.println("\n\t Bienvenido Materia");
                         opcMateria = opciones.menuCRUD();
                         while (opcMateria != 5){
+                            System.out.print("Digite el nombre de la materia: ");
+                            ID_materia = objleer.nextInt();
+                            ClsMateria objMateria = new ClsMateria(ID_materia);
                             switch (opcMateria){
-                                case 1: System.out.print("Digite la id del estudiante: ");
-                                        ID_estudiante = objleer.nextInt();
-                                        System.out.print("Digite el nombre del estudiante: ");
-                                        nombre_estudiante = objleer.next();
-                                        System.out.print("Digite carrera del estudiante: ");
-                                        carrera = objleer.next();
-                                        System.out.print("Digite email del estudiante: ");
-                                        email_estudiante = objleer.next();
-                                        System.out.print("Digite telefono del estudiante: ");
-                                        telefono_estudiante = objleer.nextInt();
-                                        bandera = 0;
-                                        if (bandera == 0)
-                                        {
-                                            System.out.println("Error adicionando registro ");
-                                        }
-                                        else
-                                        {
-                                            System.out.println("Registro adicionado");
-                                        }
+                                case 1: //En adicionar hay que verificar que exista
+                                    //Estudiante y profesor 
+                                    System.out.print("Digite el nombre de la materia: ");
+                                    nombre_materia = objleer.next();
+                                    System.out.print("Digite El salon: ");
+                                    salon = objleer.next();
+                                    System.out.print("Digite la id del estudiante: ");
+                                    ID_estudiante = objleer.nextInt();
+                                    System.out.print("Digite la id del Profesor: ");
+                                    ID_profesor = objleer.nextInt();
+                                    bandera =  objMateria.Adicionar(nombre_materia, salon, ID_estudiante, ID_profesor);
+                                    if (bandera == 0){
+                                        System.out.println("Error adicionando registro: Estudiante o Profesor sin registro ");
+                                    }else{
+                                        System.out.println("Registro adicionado");
+                                    }
                                 break;
-                                case 2: System.out.print("Digite la id del estudiante: ");
-                                        ID_estudiante = objleer.nextInt();
-                                        /*
-                                        result = clase consultar estudiante
-                                        if (result.next()) 
-                                        {
-                                            System.out.println("Registro hallado");
-                                            String prueba = result.getString("nombres");
-                                            System.out.println("\n Perteneciente al estudiante con la id: " + result.getInt("ID")
-                                            + " con el nombre: " + result.getString("nombre")
-                                            + " inscrito con el email: " + result.getString("email")
-                                            + " registrado con el telefono: " + result.getInt("telefono")
-                                            + " perteneciente al programa: " + result.getString("carrera"));
-                                            System.out.println("-----------------------------------------------------");
-                                            }
-                                        } 
-                                        else System.out.println("Registro no existente");
-                                        */
+                                case 2: result = objMateria.Consultar();
                                 break;
-                                case 3: System.out.print("Digite la id del estudiante: ");
-                                        ID_estudiante = objleer.nextInt();
-                                        System.out.print("Digite el nombre del estudiante: ");
-                                        nombre_estudiante = objleer.next();
-                                        System.out.print("Digite la carrera del estudiante: ");
-                                        carrera = objleer.next();
-                                        System.out.print("Digite el email del estudiante: ");
-                                        email_estudiante = objleer.next();
-                                        System.out.print("Digite el numero del estudiante: ");
-                                        telefono_estudiante = objleer.nextInt();
-                                        //clase modificar estudiante
-                                        bandera = 0;
-                                        if (bandera == 0)
-                                        {
-                                            System.out.println("Error modificando registro ");
-                                        }
-                                        else
-                                        {
-                                            System.out.println("Registro modificado");
-                                        }
+                                case 3: //hay que verificar que exista
+                                    //Estudiante y profesor 
+                                    System.out.print("Digite el nombre de la materia: ");
+                                    nombre_materia = objleer.next();
+                                    System.out.print("Digite El salon: ");
+                                    salon = objleer.next();
+                                    System.out.print("Digite la id del estudiante: ");
+                                    ID_estudiante = objleer.nextInt();
+                                    System.out.print("Digite la id del Profesor: ");
+                                    ID_profesor = objleer.nextInt();
+                                    bandera =  objMateria.Adicionar(nombre_materia, salon, ID_estudiante, ID_profesor);
+                                    if (bandera == 0){
+                                        System.out.println("Error adicionando registro: Estudiante o Profesor sin registro ");
+                                    }else{
+                                        System.out.println("Registro adicionado");
+                                    }
                                 break;
-                                case 4: System.out.print("Digite la id del estudiante: ");
-                                        ID_estudiante = objleer.nextInt();
-                                        /*
-                                        result = clase anular estudiante
-                                        if (result.next()) 
-                                        {
-                                            System.out.println("Registro ANULADO");
-                                            System.out.println("-----------------------------------------------------");
-                                        } 
-                                        else System.out.println("Registro no existente");
-                                        */
+                                case 4: result = objMateria.Anular();
                                 break;
-                                default : System.out.println("Adios estudiante");
+                                default : System.out.println("Adios Materia");
                             }
                             opcMateria = opciones.menuCRUD();
                     }
