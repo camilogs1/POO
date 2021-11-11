@@ -80,7 +80,7 @@ public class ClsProfesor extends ClsBaseAbstract{
         Conexion();
         bandera = 0;
         String queryII = "UPDATE profesor SET nombre = '"+nombre_profesor+"',"
-                + "email = "+email_profesor+", telefono = "+telefono_profesor+" WHERE (ID = '"+id+"')";
+                + "email = '"+email_profesor+"', telefono = '"+telefono_profesor+"' WHERE (ID = '"+id+"')";
         try {
             state = cnnConnection.createStatement();
             bandera = state.executeUpdate(queryII);

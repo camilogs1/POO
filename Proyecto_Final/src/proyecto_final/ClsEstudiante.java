@@ -80,8 +80,8 @@ public class ClsEstudiante extends ClsBaseAbstract{
     public int Modificar(String nombre_estudiante, String pcarrera, String email_estudiante, int telefono_estudiante){
         Conexion();
         bandera = 0;
-        String queryII = "UPDATE estudiante SET nombre = '"+nombre_estudiante+"', carrera = "+pcarrera+","
-                       + " email = "+email_estudiante+", telefono = "+telefono_estudiante+" WHERE ID = '"+id+"'";
+        String queryII = "UPDATE estudiante SET nombre = '"+nombre_estudiante+"', carrera = '"+pcarrera+"',"
+                       + " email = '"+email_estudiante+"', telefono = '"+telefono_estudiante+"' WHERE ID = '"+id+"'";
         try {
             state = cnnConnection.createStatement();
             bandera = state.executeUpdate(queryII);

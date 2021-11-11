@@ -74,10 +74,10 @@ public class Main {
                                             else
                                             {
                                                 System.out.println("\n Perteneciente al estudiante con la id: " + result.getInt("ID")
-                                                + " con el nombre: " + result.getString("nombre")
-                                                + " inscrito con el email: " + result.getString("email")
-                                                + " registrado con el telefono: " + result.getInt("telefono")
-                                                + " perteneciente al programa: " + result.getString("carrera"));
+                                                + " ,con el nombre: " + result.getString("nombre")
+                                                + " ,inscrito con el email: " + result.getString("email")
+                                                + " ,registrado con el telefono: " + result.getInt("telefono")
+                                                + " ,perteneciente al programa: " + result.getString("carrera"));
                                                 System.out.println("-----------------------------------------------------");
                                             }
                                         } 
@@ -145,14 +145,14 @@ public class Main {
                                             System.out.println("Registro hallado");
                                             if (result.getString("activo").equals("no"))
                                             {
-                                                System.out.print("\nEl registro está anulado");
+                                                System.out.print("\nEl registro está anulado\n");
                                             }
                                             else
                                             {
-                                                System.out.println("\n Perteneciente al estudiante con la id: " + result.getInt("ID")
-                                                + " con el nombre: " + result.getString("nombre")
-                                                + " inscrito con el email: " + result.getString("email")
-                                                + " registrado con el telefono: " + result.getInt("telefono"));
+                                                System.out.println("\n Perteneciente al profesor con la id: " + result.getInt("ID")
+                                                + " ,con el nombre: " + result.getString("nombre")
+                                                + " ,inscrito con el email: " + result.getString("email")
+                                                + " ,registrado con el telefono: " + result.getInt("telefono"));
                                                 System.out.println("-----------------------------------------------------");
                                             }
                                         } 
@@ -219,13 +219,13 @@ public class Main {
                                             System.out.println("Registro hallado");
                                             if (result.getString("activo").equals("no"))
                                             {
-                                                System.out.print("\nEl registro está anulado");
+                                                System.out.print("\nEl registro está anulado\n");
                                             }
                                             else
                                             {
                                                 System.out.println("\n Perteneciente a la materia con la id: " + result.getInt("ID_materia")
-                                                + " con el nombre: " + result.getString("nombre_materia")
-                                                + " asignado al salon: " + result.getString("salon"));
+                                                + " ,con el nombre: " + result.getString("nombre_materia")
+                                                + " ,asignado al salon: " + result.getString("salon"));
                                                 System.out.println("-----------------------------------------------------");
                                             }
                                         } 
@@ -241,11 +241,11 @@ public class Main {
                                     ID_estudiante = objleer.nextInt();
                                     System.out.print("Digite la id del Profesor: ");
                                     ID_profesor = objleer.nextInt();
-                                    bandera =  objMateria.Adicionar(nombre_materia, salon, ID_estudiante, ID_profesor);
+                                    bandera =  objMateria.Modificar(nombre_materia, salon, ID_estudiante, ID_profesor);
                                     if (bandera == 0){
                                         System.out.println("Error adicionando registro: Estudiante o Profesor sin registro ");
                                     }else{
-                                        System.out.println("Registro adicionado");
+                                        System.out.println("Registro Modificado");
                                     }
                                 break;
                                 case 4: bandera = objMateria.Anular();

@@ -89,8 +89,8 @@ public class ClsMateria extends ClsBaseAbstract{
         if(verificarEstudante.next() && verificarProfe.next()){
             bandera = 0;
             //SI entra al IF es pq exixten ent se adiciona el registro
-            String queryII = "UPDATE materia SET nombre_materia = '"+nombre_materia+"', salon = "+salon+","
-                       + " ID_profesor = "+ID_profesor+", ID_estudiante = "+ID_estudiante+" WHERE (ID = '"+id+"')";
+            String queryII = "UPDATE materia SET nombre_materia = '"+nombre_materia+"', salon = '"+salon+"',"
+                       + " ID_profesor = '"+ID_profesor+"', ID_estudiante = '"+ID_estudiante+"' WHERE (ID_materia = '"+id+"')";
             try {
                 state = cnnConnection.createStatement();
                 bandera = state.executeUpdate(queryII);
