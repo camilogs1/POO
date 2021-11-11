@@ -9,5 +9,5 @@ public abstract class ClsBaseAbstract {
    
     abstract public void Conexion();
     abstract ResultSet Consultar();
-    abstract ResultSet Anular();
+    abstract public int Anular();
 }

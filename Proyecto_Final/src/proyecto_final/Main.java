@@ -5,7 +5,8 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
+        
         Scanner objleer=new Scanner (System.in);
             //adiccionar cls's
             ClsOpciones opciones = new ClsOpciones();
@@ -63,22 +64,24 @@ public class Main {
                                     }
                                 break;
                                 case 2: result = objEstudiante.Consultar();
-                                        /*
-                                        result = clase consultar estudiante
                                         if (result.next()) 
                                         {
                                             System.out.println("Registro hallado");
-                                            String prueba = result.getString("nombres");
-                                            System.out.println("\n Perteneciente al estudiante con la id: " + result.getInt("ID")
-                                            + " con el nombre: " + result.getString("nombre")
-                                            + " inscrito con el email: " + result.getString("email")
-                                            + " registrado con el telefono: " + result.getInt("telefono")
-                                            + " perteneciente al programa: " + result.getString("carrera"));
-                                            System.out.println("-----------------------------------------------------");
+                                            if (result.getString("activo").equals("no"))
+                                            {
+                                                System.out.print("\nEl registro está anulado\n");
+                                            }
+                                            else
+                                            {
+                                                System.out.println("\n Perteneciente al estudiante con la id: " + result.getInt("ID")
+                                                + " con el nombre: " + result.getString("nombre")
+                                                + " inscrito con el email: " + result.getString("email")
+                                                + " registrado con el telefono: " + result.getInt("telefono")
+                                                + " perteneciente al programa: " + result.getString("carrera"));
+                                                System.out.println("-----------------------------------------------------");
                                             }
                                         } 
                                         else System.out.println("Registro no existente");
-                                        */
                                 break;
                                 case 3: 
                                         System.out.print("Digite el nombre del estudiante: ");
@@ -98,16 +101,16 @@ public class Main {
                                             System.out.println("Registro modificado");
                                         }
                                 break;
-                                case 4: result = objEstudiante.Anular();
-                                        /*
-                                        result = clase anular estudiante
-                                        if (result.next()) 
+                                case 4: bandera = objEstudiante.Anular();
+                                        if (bandera == 0) 
+                                        {
+                                            System.out.println("Error anulando registro");
+                                        } 
+                                        else
                                         {
                                             System.out.println("Registro ANULADO");
                                             System.out.println("-----------------------------------------------------");
-                                        } 
-                                        else System.out.println("Registro no existente");
-                                        */
+                                        }
                                 break;
                                 default : System.out.println("Digite una opcion valida");
                             }
@@ -130,29 +133,30 @@ public class Main {
                                         System.out.print("Digite telefono del Profesor: ");
                                         telefono_profesor = objleer.nextInt();
                                         bandera = objProfesor.Adicionar(nombre_profesor, email_profesor, telefono_profesor);
-                                        if (bandera == 0){
+                                        if (bandera == 0)
+                                        {
                                             System.out.println("Error adicionando registro ");
-                                        }else{
-                                            System.out.println("Registro adicionado");
                                         }
+                                        else System.out.println("Registro adicionado");
                                 break;
                                 case 2: result = objProfesor.Consultar();
-                                        /*
-                                        result = clase consultar estudiante
                                         if (result.next()) 
                                         {
                                             System.out.println("Registro hallado");
-                                            String prueba = result.getString("nombres");
-                                            System.out.println("\n Perteneciente al estudiante con la id: " + result.getInt("ID")
-                                            + " con el nombre: " + result.getString("nombre")
-                                            + " inscrito con el email: " + result.getString("email")
-                                            + " registrado con el telefono: " + result.getInt("telefono")
-                                            + " perteneciente al programa: " + result.getString("carrera"));
-                                            System.out.println("-----------------------------------------------------");
+                                            if (result.getString("activo").equals("no"))
+                                            {
+                                                System.out.print("\nEl registro está anulado");
+                                            }
+                                            else
+                                            {
+                                                System.out.println("\n Perteneciente al estudiante con la id: " + result.getInt("ID")
+                                                + " con el nombre: " + result.getString("nombre")
+                                                + " inscrito con el email: " + result.getString("email")
+                                                + " registrado con el telefono: " + result.getInt("telefono"));
+                                                System.out.println("-----------------------------------------------------");
                                             }
                                         } 
                                         else System.out.println("Registro no existente");
-                                        */
                                 break;
                                 case 3: System.out.print("Digite el nombre del Profesor: ");
                                         nombre_profesor = objleer.next();
@@ -168,16 +172,16 @@ public class Main {
                                             System.out.println("Registro modificado");
                                         }
                                 break;
-                                case 4: result = objProfesor.Anular();
-                                        /*
-                                        result = clase anular estudiante
-                                        if (result.next()) 
+                                case 4: bandera = objProfesor.Anular();
+                                        if (bandera == 0) 
+                                        {
+                                            System.out.println("Error anulando registro");
+                                        } 
+                                        else
                                         {
                                             System.out.println("Registro ANULADO");
                                             System.out.println("-----------------------------------------------------");
-                                        } 
-                                        else System.out.println("Registro no existente");
-                                        */
+                                        }
                                 break;
                                 default : System.out.println("Adios estudiante");
                             }
@@ -188,7 +192,7 @@ public class Main {
                         System.out.println("\n\t Bienvenido Materia");
                         opcMateria = opciones.menuCRUD();
                         while (opcMateria != 5){
-                            System.out.print("Digite el nombre de la materia: ");
+                            System.out.print("Digite el id de la materia: ");
                             ID_materia = objleer.nextInt();
                             ClsMateria objMateria = new ClsMateria(ID_materia);
                             switch (opcMateria){
@@ -210,6 +214,22 @@ public class Main {
                                     }
                                 break;
                                 case 2: result = objMateria.Consultar();
+                                        if (result.next()) 
+                                        {
+                                            System.out.println("Registro hallado");
+                                            if (result.getString("activo").equals("no"))
+                                            {
+                                                System.out.print("\nEl registro está anulado");
+                                            }
+                                            else
+                                            {
+                                                System.out.println("\n Perteneciente a la materia con la id: " + result.getInt("ID_materia")
+                                                + " con el nombre: " + result.getString("nombre_materia")
+                                                + " asignado al salon: " + result.getString("salon"));
+                                                System.out.println("-----------------------------------------------------");
+                                            }
+                                        } 
+                                        else System.out.println("Registro no existente");
                                 break;
                                 case 3: //hay que verificar que exista
                                     //Estudiante y profesor 
@@ -228,7 +248,16 @@ public class Main {
                                         System.out.println("Registro adicionado");
                                     }
                                 break;
-                                case 4: result = objMateria.Anular();
+                                case 4: bandera = objMateria.Anular();
+                                        if (bandera == 0) 
+                                        {
+                                            System.out.println("Error anulando registro");
+                                        } 
+                                        else
+                                        {
+                                            System.out.println("Registro ANULADO");
+                                            System.out.println("-----------------------------------------------------");
+                                        }
                                 break;
                                 default : System.out.println("Adios Materia");
                             }
